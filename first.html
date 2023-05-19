@@ -59,11 +59,12 @@
   </script>
   <script>
 function myFunction() {
-  console.log(document.getElementById("demo").style.color);
-  switch (document.getElementById("demo").style.color)  {
-    case color.red:
+  const currentColor = document.getElementById("demo").style.color;
+  console.log(currentColor);
+  switch (currentColor)  {
+    case "red":
       document.getElementById("demo").style.color = black;
-    case 0:
+    case "black":
       document.getElementById("demo").style.color = red;
   }
 }
