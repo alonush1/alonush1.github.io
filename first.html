@@ -4,14 +4,11 @@
   <title>Authentication Page</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-     $(document).queryselector("#btnAuth")
+    $(document).ready(function() {
+           $(document).queryselector("#btnAuth")
     .addEventListener("click", function() {    
       console.log("User has clicked on the button!");
     });
-  </script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function() {
       // Function to handle button click event
       $("#btnAuth").click(function() {
         // Make an AJAX request to the Transmit Security API
@@ -49,7 +46,7 @@
     <input type="text" id="last-name" name="last-name" required><br><br>
     
     <label for="email">Email Address:</label>
-    <input type="email" id="email" name="email" required><br><br>
+    <input type="email" id="email" name="email"><br><br>
     
     <button type="submit" id="btnAuth">Authenticate</button>
   </form>
