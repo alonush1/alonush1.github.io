@@ -48,12 +48,15 @@
     <label for="email">Email Address:</label>
     <input type="email" id="email" name="email"><br><br>
     
-    <button type="submit" id="btnAuth">Authenticate</button>
+    <button type="submit" onclick="clickk" id="btnAuth">Authenticate</button>
     
     <h3 id="demo" onclick="myFunction()">Click me to change my color.</h3>
   </form>
   
   <script>
+    function clickk() {
+      console.log("Clicked!");
+    }
 function myFunction() {
   document.getElementById("demo").style.color = "red";
 }
