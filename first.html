@@ -10,6 +10,7 @@
     //  console.log("User has clicked on the button!");
     //});
       // Function to handle button click event
+    document.getElementById("demo").style.color = "black";
       $("#btnAuth").click(function() {
         console.log("User has clicked on the button!");
         // Make an AJAX request to the Transmit Security API
@@ -59,7 +60,6 @@
   </script>
   <script>
 function myFunction() {
-  document.getElementById("demo").style.color = "black";
   const currentColor = document.getElementById("demo").style.color;
   console.log(currentColor);
   switch (currentColor)  {
@@ -67,6 +67,8 @@ function myFunction() {
       document.getElementById("demo").style.color = "black";
     case "black":
       document.getElementById("demo").style.color = "red";
+    default:
+      document.getElementById("demo").style.color = "black";
   }
 }
 </script>
