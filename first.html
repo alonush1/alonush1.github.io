@@ -4,13 +4,14 @@
   <title>Authentication Page</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    $(document).ready(function() {
-           $(document).queryselector("#btnAuth")
-    .addEventListener("click", function() {    
-      console.log("User has clicked on the button!");
-    });
+    //$(document).ready(function() {
+    //       $(document).queryselector("#btnAuth")
+    //.addEventListener("click", function() {    
+    //  console.log("User has clicked on the button!");
+    //});
       // Function to handle button click event
       $("#btnAuth").click(function() {
+        console.log("User has clicked on the button!");
         // Make an AJAX request to the Transmit Security API
         $.ajax({
           url: "https://api.transmitsecurity.com/authenticate",
