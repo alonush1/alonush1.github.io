@@ -1,76 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Authentication Page</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    //$(document).ready(function() {
-    //       $(document).queryselector("#btnAuth")
-    //.addEventListener("click", function() {    
-    //  console.log("User has clicked on the button!");
-    //});
-      // Function to handle button click event
-    document.getElementById("demo").style.color = "black";
-      $("#btnAuth").click(function() {
-        console.log("User has clicked on the button!");
-        // Make an AJAX request to the Transmit Security API
-        //$.ajax({
-        //  url: "https://api.transmitsecurity.com/authenticate",
-        //  method: "POST",
-       //   data: {
-            // Include any required data or parameters for authentication
-            // For example, username, password, or biometric data
-       //   },
-       //   success: function(response) {
-            // Handle the API response
-       //     console.log("Authentication successful!");
-       //     console.log(response);
-            // Perform any necessary actions based on the response
-      //    },
-       //   error: function(xhr, status, error) {
-            // Handle any errors that occur during the API request
-       //     console.error("Error occurred during authentication");
-       //     console.error(error);
-     //     }
-    //    });
-    });
-  </script>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <!-- Add some CSS to change client UI -->
+    <style>
+    body {
+        background-color: #232F3E;
+        }
+    label, button {
+        color: #FF9900;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin-left: 40px;
+        }
+     input {
+        color: #232F3E;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin-left: 20px;
+        }
+    </style>
+    <script>
+        // define the callAPI function that takes a first name and last name as parameters
+        var callAPI = (firstName,lastName)=>{
+            // instantiate a headers object
+            var myHeaders = new Headers();
+            // add content type header to object
+            myHeaders.append("Content-Type", "application/json");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = JSON.stringify({"firstName":firstName,"lastName":lastName});
+            // create a JSON object with parameters for API call and store in a variable
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch("https://u6mp4mhp32.execute-api.us-west-2.amazonaws.com/dev", requestOptions)
+            .then(response => response.text())
+            .then(result => alert(JSON.parse(result).body))
+            .catch(error => console.log('error', error));
+        }
+    </script>
 </head>
 <body>
-  <h1>Authentication Page</h1>
-  
-  <form>
-    <label for="first-name">First Name:</label>
-    <input type="text" id="first-name" name="first-name" required><br><br>
-    
-    <label for="last-name">Last Name:</label>
-    <input type="text" id="last-name" name="last-name" required><br><br>
-    
-    <label for="email">Email Address:</label>
-    <input type="email" id="email" name="email"><br><br>
-    
-    <button type="submit" id="btnAuth">Authenticate</button>
-    
-    <h3 id="demo" color="black" onclick="myFunction()">Click me to change my color.</h3>
-  </form>
-  
-  <script>
-    $("#btnAuth").click(function() {
-        console.log("User has clicked on the button!"); });
-  </script>
-  <script>
-function myFunction() {
-  const currentColor = document.getElementById("demo").style.color;
-  console.log(currentColor);
-  switch (currentColor)  {
-    case "red":
-      document.getElementById("demo").style.color = "black";
-    case "black":
-      document.getElementById("demo").style.color = "red";
-    default:
-      document.getElementById("demo").style.color = "black";
-  }
-}
-</script>
+    <form>
+        <label>First Name :</label>
+        <input type="text" id="fName">
+        <label>Last Name :</label>
+        <input type="text" id="lName">
+        <!-- set button onClick method to call function we defined passing input values as parameters -->
+        <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Call API</button>
+    </form>
 </body>
 </html>
